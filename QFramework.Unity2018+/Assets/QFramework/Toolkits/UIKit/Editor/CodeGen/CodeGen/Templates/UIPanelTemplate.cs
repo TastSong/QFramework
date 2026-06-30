@@ -1,11 +1,10 @@
 /****************************************************************************
- * Copyright (c) 2016 ~ 2022 liangxiegame UNDER MIT License
- * 
- * https://qframework.cn
- * https://github.com/liangxiegame/QFramework
- * https://gitee.com/liangxiegame/QFramework
- * 
- ****************************************************************************/
+* Copyright (c) 2016 ~ 2025 liangxiegame UNDER MIT LINCENSE
+* 
+* https://qframework.cn
+* https://github.com/liangxiegame/QFramework
+* https://gitee.com/liangxiegame/QFramework
+****************************************************************************/
 
 namespace QFramework
 {
@@ -13,8 +12,7 @@ namespace QFramework
 
     public class UIPanelTemplate
     {
-        public static void Write(string name, string srcFilePath, string scriptNamespace,
-            UIKitSettingData uiKitSettingData)
+        public static void Write(string name, string srcFilePath, string scriptNamespace)
         {
             var scriptFile = srcFilePath;
 

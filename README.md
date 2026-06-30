@@ -20,15 +20,15 @@
 
 ## 提供的架构图
 
-![](http://processon.com/chart_image/5c270aa6e4b007ba5d5029dc.png)
+![image.png](https://file.liangxiegame.com/5e9f1682-1907-47a2-a23a-2d5a4ba2e7a4.png)
 
 ## 举个例子（一图胜千言😂）
 
-![](https://file.liangxiegame.com/6bf42306-0b2a-4417-bbcf-354af0132596.png)
+![](https://file.liangxiegame.com/dee18df4-8275-4ba2-9b3d-ee3e6555f8e6.png)
 
 ## 各种情况的示意图
 
-![](http://processon.com/chart_image/5cbb1edce4b0bab90960a4f6.png)
+![image-20260124142617406](https://file.liangxiegame.com/9fbc9dc9-cbac-49ba-b6f8-328c2e063d9c.png)
 
 ## 架构使用规范
 
@@ -95,24 +95,34 @@
 | **群友案例** |  |  |
 | 赛车游戏《Crazy Car》 | 群友 [TastSong](https://github.com/TastSong) 使用 QF 进行重构的开源赛车游戏 | [游戏主页(Github](https://github.com/TastSong/CrazyCar)) |
 | **社区** |  |  |
-| QQ 群:623597263        | 交流群 | [点击加群](http://shang.qq.com/wpa/qunwpa?idkey=706b8eef0fff3fe4be9ce27c8702ad7d8cc1bceabe3b7c0430ec9559b3a9ce66) |
-| github issue | github 社区 | [地址](https://github.com/liangxiegame/QFramework/issues/new) |
-| gitee issue | gitee 社区（国内访问快） | [地址](https://gitee.com/liangxiegame/QFramework/issues) |
+| QQ 群1（已满）：623597263 | 交流群 | [点击加群](https://qm.qq.com/cgi-bin/qm/qr?k=G4DZ_6qMbN8miP8RcRD9NdhNcVyrD88F&jump_from=webapi&authKey=P8WO3esK/KbDxWPHI5F3EC04IPT6jDSkk/tl73/EHIcRkMTvnLhwpTK1PtHr6V+p) |
+| QQ 群2：541745166 | 交流群 | [点击加群](https://qm.qq.com/q/VI5Od3rri4) |
+| 腾讯频道 | 中文社区 | [点击加入频道](https://pd.qq.com/s/cfe1690jf) |
+| Discord | 英文社区 | [点击加入频道](https://discord.gg/PHqHX5v5SE) |
 | **教程** |  |  |
 | 《框架搭建 决定版》    | 教程 QFramework  的核心架构是怎么演化过来的？ | [课程主页](https://learn.u3d.cn/tutorial/framework_design)\|[学生课堂笔记1](https://github.com/Haogehaojiu/FrameworkDesign)\|[学生课堂笔记2](https://github.com/Haogehaojiu/ShootingEditor2D) |
-| **产品案例** | 如果用了 qf 并且想要在如下列表中登记，可以在 github/gitee 的 issue 里发帖子,也可以加 qq 群，也可以用邮箱联系凉鞋 liangxiegame@163.com |  |
-| 独立游戏《当火车鸣笛三秒》 | 部分使用 QF 制作的独立游戏 | [Steam](https://store.steampowered.com/app/1563700/_/)\|[TapTap](https://www.taptap.cn/app/208258) |
-| 独立游戏《你好茄子》 | 部分使用 QF 制作的独立游戏 | [游戏主页(Steam)](https://store.steampowered.com/app/2091640/Hi_Eggplant/) |
-| 独立游戏《第一座山》 | 部分使用 QF 制作的独立游戏 | [游戏主页(Steam)](https://store.steampowered.com/app/2149980/The_First_Mountain/) |
-| 独立游戏《推灭泡泡姆》 | ‍QF 群友，大学生团队制作的独立游戏，终于等到上架啦，亲自游玩过，很好玩，大家多多支持呀~（P.S 使用 QF.cs 作为架构开发的哦~） | [游戏主页(TapTap)](https://www.taptap.com/app/233228) |
-| 独立游戏《鬼山之下》   | 部分使用 QF 制作的独立游戏 | [游戏主页(Steam)](https://store.steampowered.com/app/1517160/_/) |
-| 手机游戏《谐音梗挑战》 | 部分使用 QF 制作的独立游戏 | [游戏主页(TapTap)](https://www.taptap.com/app/201075)        |
+| **产品案例** | 如果用了 qf 并且想要在如下列表中登记，可以在 github/gitee 的 issue 里发帖子,也可以加 qq 群，也可以用邮箱联系凉鞋 liangxiegame@163.com，当然如果看到使用 qf 的项目，我也会先去尝试征得同意再放到如下列表。 |  |
+| ![img](./README/guanniaobiji.jpg) | 独立游戏《观鸟笔记》 | [Steam](https://store.steampowered.com/app/4111370/) |
+| ![](./README/乌合之众.jpg) | 独立游戏《乌合之众》 | [Steam](https://store.steampowered.com/app/1741170/_/) |
+| ![](./README/银河摸鱼人.jpg) | 独立游戏《银河摸鱼人》 | [Steam](https://store.steampowered.com/app/1731000/) |
+| ![](./README/scalebox.jpg) | 独立游戏《ScaleBox》 | [Steam](https://store.steampowered.com/app/3528380/ScaleBox/) |
+| ![](./README/myrose.jpg) | 独立游戏《我的玫瑰》 | [Steam](https://store.steampowered.com/app/3246640/_/) |
+| ![](./README/超自然.jpg) | 独立游戏《蚀界档案》 | [TapTap](https://www.taptap.cn/app/222365) \|[Steam](https://store.steampowered.com/app/1976540/_/) |
+| ![](./README/boxbread.jpeg) | 独立游戏《盒子面包坊》 | [TapTap](https://www.taptap.cn/app/384085) \| [Steam](https://store.steampowered.com/app/2942950/_/) |
+| ![](./README/X-teroids.png) | 独立游戏《X-teriods》 | [Steam](https://store.steampowered.com/app/3342540/Xteroids/) |
+| ![](./README/thebirthofsprites.jpg) | 独立游戏《你好茄子：精灵的诞生》 | [Steam](https://store.steampowered.com/app/2375290/_/) |
+| ![](./README/huoche.jpg) | 独立游戏《当火车鸣笛三秒》 | [Steam](https://store.steampowered.com/app/1563700/_/)\|[TapTap](https://www.taptap.cn/app/208258) |
+| ![](./README/qiezi1.jpg) | 独立游戏《你好茄子》 | [Steam](https://store.steampowered.com/app/2091640/Hi_Eggplant/) |
+| ![](./README/1stmountain.jpg) | 独立游戏《第一座山》 | [Steam](https://store.steampowered.com/app/2149980/The_First_Mountain/) |
+| ![](./README/tuimiepaopaomu.webp) | 独立游戏《推灭泡泡姆》 | [TapTap](https://www.taptap.com/app/233228) |
+| ![](./README/utgm.jpg) | 独立游戏《鬼山之下》 | [Steam](https://store.steampowered.com/app/1517160/_/) |
+| ![](./README/xieyingeng.png) | 手机游戏《谐音梗挑战》 | [TapTap](https://www.taptap.com/app/201075)        |
 | **其他相关教程** |  |  |
 | 《独立游戏体验计划》（猫叔） | 独立游戏制作体验教程，有用到 QFramework.cs | [b 站](https://space.bilibili.com/656352) |
 | 《原创独立游戏制作：平台射击 Roguelike》（凉鞋） | 原创独立游戏制作教程，有用到 QFramework.cs | [b 站](https://space.bilibili.com/60450548/channel/collectiondetail?sid=125221) |
 | 《原创独立游戏制作：类星露谷》（凉鞋） | 原创独立游戏制作教程，有用到 PlayMaker、QFramework.Tookits | [b 站](https://space.bilibili.com/60450548/channel/collectiondetail?sid=919279) |
 | 《QFramework 游戏开发：类幸存者》 | 面向 QFramework 的游戏开发教程，完成一款类吸血鬼幸存者游戏。 | [b 站](https://www.bilibili.com/video/BV1Uu4y1i7WH/) |
-| 《QFramework 教程年会员》 | QFramework 相关的课程案例 | [GamePix](https://www.gamepixedu.com/goods/show/55) |
+| 《QFramework 教程会员》 | QFramework 相关的课程案例 | [GamePix](https://www.gamepixedu.com/vip/?levelId=1) |
 
 
 
@@ -176,4 +186,12 @@
 <p><a href="https://www.jetbrains.com/?from=QFramework ">
 <img src="https://file.liangxiegame.com/2bf40802-c296-4bdc-bc8a-718000503771.png" alt="JetBrains的Logo" width="20%" height="20%"></a></p>
 
-本开源项目由 [QFramework 教程年会员](https://www.gamepixedu.com/goods/show/55) 提供资助
+感谢 OpenAI 通过 Codex for OSS 计划对本项目的开源维护提供支持。
+
+[![Powered by Codex](https://img.shields.io/badge/Powered%20by-Codex-000000?style=flat-square)](https://openai.com/codex/)
+
+感谢 GitHub Copilot 对本项目开源维护提供支持。
+
+[![Powered by Copilot](https://img.shields.io/badge/Powered%20by-Copilot-000000?style=flat-square&logo=githubcopilot)](https://github.com/features/copilot)
+
+本开源项目由 [QFramework 教程年会员](https://www.gamepixedu.com/vip/?levelId=1) 提供资助

@@ -1,5 +1,5 @@
 /****************************************************************************
- * Copyright (c) 2016 - 2023 liangxiegame UNDER MIT License
+ * Copyright (c) 2016 - 2025 liangxiegame UNDER MIT License
  * 
  * https://qframework.cn
  * https://github.com/liangxiegame/QFramework
@@ -64,17 +64,6 @@ ResKit.InitAsync().ToAction().Start(this,()=>
         {
             yield return ResMgr.InitAsync();
         }
-
-        private static readonly Lazy<ResKit> mInstance = new Lazy<ResKit>(() => new ResKit().InternalInit());
-        internal static ResKit Get => mInstance.Value;
-
-        internal IOCContainer Container = new IOCContainer();
-
-        ResKit InternalInit()
-        {
-            Container.Register<IZipFileHelper>(new ZipFileHelper());
-            Container.Register<IBinarySerializer>(new BinarySerializer());
-            return this;
-        }
+        
     }
 }

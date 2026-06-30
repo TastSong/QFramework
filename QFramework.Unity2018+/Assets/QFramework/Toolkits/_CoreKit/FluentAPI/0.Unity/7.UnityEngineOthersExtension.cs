@@ -18,6 +18,20 @@ namespace QFramework
 #endif
     public static class UnityEngineOthersExtension
     {
+        
+#if UNITY_EDITOR
+        [MethodAPI]
+        [APIDescriptionCN("随机 List 中的一个元素")]
+        [APIDescriptionEN("get random item in a list")]
+        [APIExampleCode(@"
+new List<int>(){ 1,2,3 }.PickRandom();
+")]
+#endif
+        public static T PickRandom<T>(this List<T> list)
+        {
+            return list[UnityEngine.Random.Range(0, list.Count)];
+        }
+        
 #if UNITY_EDITOR
         // v1 No.155
         [MethodAPI]
@@ -99,6 +113,26 @@ var absValue = -1.0f.Abs();
         public static float Abs(this int self)
         {
             return Mathf.Abs(self);
+        }
+        
+        
+#if UNITY_EDITOR
+        // Added in v1.0.150
+        [MethodAPI]
+        [APIDescriptionCN("Mathf.Exp")]
+        [APIDescriptionEN("Mathf.Exp")]
+        [APIExampleCode(@"
+var expValue = 1.0f.Exp(); // Mathf.Exp(1.0f)
+")]
+#endif
+        public static float Exp(this float self)
+        {
+            return Mathf.Exp(self);
+        }
+        
+        public static float Exp(this int self)
+        {
+            return Mathf.Exp(self);
         }
 
 #if UNITY_EDITOR

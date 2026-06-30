@@ -94,6 +94,13 @@ myScript.Parent(rootGameObj);
             self.transform.SetParent(parent == null ? null : parent.transform);
             return self;
         }
+        
+
+        public static T Parent<T>(this T self, GameObject parent) where T : Component
+        {
+                self.transform.SetParent(parent == null ? null : parent.transform);
+                return self;
+        }
 
 #if UNITY_EDITOR
         // v1 No.66
@@ -104,10 +111,16 @@ myScript.Parent(rootGameObj);
 gameObj.SetParent(null);
 ")]
 #endif
-        public static GameObject Parent(this GameObject self, Component parent)
+        public static GameObject Parent(this GameObject self, Component parent) 
         {
             self.transform.SetParent(parent == null ? null : parent.transform);
             return self;
+        }
+        
+        public static GameObject Parent(this GameObject self, GameObject parent)
+        {
+                self.transform.SetParent(parent == null ? null : parent.transform);
+                return self;
         }
 
 #if UNITY_EDITOR
@@ -134,7 +147,7 @@ component.AsRootTransform();
 gameObject.AsRootGameObject();
 ")]
 #endif
-        public static GameObject AsRootGameObject<T>(this GameObject self)
+        public static GameObject AsRootGameObject(this GameObject self)
         {
             self.transform.SetParent(null);
             return self;

@@ -1,5 +1,5 @@
 ﻿/****************************************************************************
- * Copyright (c) 2015 ~ 2024 liangxiegame MIT License
+ * Copyright (c) 2015 ~ 2025 liangxiegame MIT License
  *
  * QFramework v1.0
  *
@@ -20,9 +20,12 @@
  *  幽飞冷凝雪～冷
  *
  * Community
- *  QQ Group: 623597263
+ *  QQ 群 1: 623597263(已满)
+ *  QQ 群 2: 541745166
+ *  腾讯频道：https://pd.qq.com/s/cfe1690jf
+ *  Discord：https://discord.gg/PHqHX5v5SE
  * 
- * Latest Update: 2024.5.12 20:17 add UnRegisterWhenCurrentSceneUnloaded(Suggested by misakiMeiii) 
+ * Latest Update: 2025.9.16 15:27 add qq group 2 and discord link tencent pd
  ****************************************************************************/
 
 using System;
@@ -77,13 +80,13 @@ namespace QFramework
         {
             get
             {
-                if (mArchitecture == null) MakeSureArchitecture();
+                if (mArchitecture == null) InitArchitecture();
                 return mArchitecture;
             }
         }
 
 
-        static void MakeSureArchitecture()
+        public static void InitArchitecture()
         {
             if (mArchitecture == null)
             {
@@ -783,7 +786,7 @@ namespace QFramework
 
     public interface IEasyEvent
     {
-        IUnRegister Register(Action onEvent);
+        IUnRegister Register(Action onEvent); 
     }
 
     public class EasyEvent : IEasyEvent
@@ -794,6 +797,12 @@ namespace QFramework
         {
             mOnEvent += onEvent;
             return new CustomUnRegister(() => { UnRegister(onEvent); });
+        }
+
+        public IUnRegister RegisterWithACall(Action onEvent)
+        {
+            onEvent.Invoke();
+            return Register(onEvent);
         }
 
         public void UnRegister(Action onEvent) => mOnEvent -= onEvent;
@@ -812,6 +821,7 @@ namespace QFramework
         }
 
         public void UnRegister(Action<T> onEvent) => mOnEvent -= onEvent;
+        
 
         public void Trigger(T t) => mOnEvent?.Invoke(t);
 
@@ -916,6 +926,12 @@ namespace QFramework
             return new CustomUnRegister(() => { UnRegister(onEvent); });
         }
 
+        public IUnRegister RegisterWithACall(Action onEvent)
+        {
+            onEvent.Invoke();
+            return Register(onEvent);
+        }
+        
         public void UnRegister(Action onEvent)
         {
             mOnEvent -= onEvent;

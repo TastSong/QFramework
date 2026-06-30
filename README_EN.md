@@ -1,26 +1,25 @@
-![LOGO](https://file.liangxiegame.com/67ca2c27-d711-40b2-96f3-d2f6071e3f3c.png)
+![LOGO](LOGO.png)
 
 [![](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/liangxiegame/QFramework/blob/master/LICENSE)
-[![Build Status](https://travis-ci.org/liangxiegame/QFramework.svg?branch=master)](https://travis-ci.org/liangxiegame/QFramework)
 
 
 # QFramework Intro
 
 [中文](README)|[English](README_EN.md)
 
-[QFramework](https://github.com/liangxiegame/QFramework)  is a framework. she support solid pricinple、domain design driven、event-driven、data-driven、layered、mvc、cqrs、modulization、extendable、scalable architecture. Simple but powerful! she only has 800 lines of code.can save to a note-taking app. 
+[QFramework](https://github.com/liangxiegame/QFramework)  is a framework. she support solid pricinple、domain design driven、event-driven、data-driven、layered、mvc、cqrs、modulization、extendable、scalable architecture. Simple but powerful! she only has 1000 lines of code.can save to a note-taking app. 
 
 ## Architecture diagram
 
-![](http://processon.com/chart_image/5c270aa6e4b007ba5d5029dc.png)
+![image.png](https://file.liangxiegame.com/5e9f1682-1907-47a2-a23a-2d5a4ba2e7a4.png)
 
-## For Example（😂）
+## For Example
 
-![](https://file.liangxiegame.com/5fcdf6d1-0605-4ae6-b4bf-12e661eb2f1e.png)
+![](https://file.liangxiegame.com/dd678daa-6bca-46ea-8d8e-adcb5208ddfb.png)
 
 ## Schematic diagram of various situations
 
-![](http://processon.com/chart_image/5cbb1edce4b0bab90960a4f6.png)
+![image-20260124142617406](https://file.liangxiegame.com/9fbc9dc9-cbac-49ba-b6f8-328c2e063d9c.png)
 
 ## Architecture Rule
 
@@ -86,10 +85,22 @@
 | QFramework.Toolkits.Demo.Saolei             | Mine clearance Demo by QFramework.Toolkits（Need Install QFramework.Toolkits） | [download unitypackage](./QFramework.Toolkits.Demo.SaoLei.unitypackage) |
 | QFramework.ToolKitsPro                      | More Powerful Tools version based on QFramework.ToolKits (QFramework.Toolkits included) | [AssetStore](http://u3d.as/SJ9)                              |
 | **Community**                               |                                                              |                                                              |
-| github issue                                | github community                                             | [address](https://github.com/liangxiegame/QFramework/issues/new) |
-| gitee issue                                 | gitee community                                              | [address](https://gitee.com/liangxiegame/QFramework/issues)  |
+| github issue                                | github community                                             | [link](https://github.com/liangxiegame/QFramework/issues/new) |
+| gitee issue                                 | gitee community                                              | [link](https://gitee.com/liangxiegame/QFramework/issues)     |
+| discord                                     |                                                              | [link](https://discord.gg/PHqHX5v5SE)                        |
 | **ShowCase**                                | email me or publish on github's issue. My email: liangxiegame@163.com |                                                              |
+| ![](./README/guanniaobiji_en.jpg)           | Indie Game《Birdwatching Notebook》                          | [Steam](https://store.steampowered.com/app/4111370/)         |
+| 《Fools, Maniacs and Liars》                |                                                              | [Steam](https://store.steampowered.com/app/1741170/_/)       |
+| 《Skulker》                                 |                                                              | [Steam](https://store.steampowered.com/app/1731000/)         |
+| 《ScaleBox》                                |                                                              | [Steam](https://store.steampowered.com/app/3528380/ScaleBox/) |
+| 《MyRose》                                  |                                                              | [Steam](https://store.steampowered.com/app/3246640/_/)       |
+| 《蚀界档案》                                |                                                              | [TapTap](https://www.taptap.cn/app/222365) \|[Steam](https://store.steampowered.com/app/1976540/_/) |
+| 《Box Bakery》                              |                                                              | [Steam](https://store.steampowered.com/app/2942950/Box_Bakery/) |
+| 《X-teroids》                               |                                                              | [Steam](https://store.steampowered.com/app/3342540/Xteroids/) |
+| 《The last day of Han dynasty》             |                                                              | [Steam](https://store.steampowered.com/app/2078910/_/)       |
+| 《Hi Eggplant：The Birth Of Sprites》       |                                                              | [Steam](https://store.steampowered.com/app/2375290/_/)       |
 | 《When The Train Buzzes For Three Seconds》 |                                                              | [Steam](https://store.steampowered.com/app/1563700/_/)\|[TapTap](https://www.taptap.cn/app/208258) |
+| 《Hi Eggplant》                             |                                                              | [Steam](https://store.steampowered.com/app/2091640/Hi_Eggplant/) |
 | 《The First Mountain》                      |                                                              | [Steam](https://store.steampowered.com/app/2149980/The_First_Mountain/) |
 | 《Hi Eggplant》                             |                                                              | [Steam](https://store.steampowered.com/app/2091640/Hi_Eggplant/) |
 | 《Under The Ghost Mountain》                |                                                              | [Steam](https://store.steampowered.com/app/1517160/_/)       |
@@ -151,3 +162,11 @@ Thanks for Licenses Supporting by JetBrains Company
 
 <p><a href="https://www.jetbrains.com/?from=QFramework ">
 <img src="https://file.liangxiegame.com/2bf40802-c296-4bdc-bc8a-718000503771.png" alt="JetBrains的Logo" width="20%" height="20%"></a></p>
+
+This project is supported by OpenAI's Codex for OSS program for open-source maintenance.
+
+[![Powered by Codex](https://img.shields.io/badge/Powered%20by-Codex-000000?style=flat-square)](https://openai.com/codex/)
+
+This project is also supported by GitHub Copilot for open-source maintenance.
+
+[![Powered by Copilot](https://img.shields.io/badge/Powered%20by-Copilot-000000?style=flat-square&logo=githubcopilot)](https://github.com/features/copilot)

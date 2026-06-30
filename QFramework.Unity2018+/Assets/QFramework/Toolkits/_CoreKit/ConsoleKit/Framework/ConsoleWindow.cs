@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -12,18 +13,21 @@ namespace QFramework
         /// <summary>
         /// Update回调
         /// </summary>
-        public delegate void OnUpdateCallback();
+        internal delegate void OnUpdateCallback();
 
         /// <summary>
         /// OnGUI回调
         /// </summary>
-        public delegate void OnGUICallback();
+        internal delegate void OnGUICallback();
 
-        public OnUpdateCallback onUpdateCallback = null;
+        internal OnUpdateCallback onUpdateCallback = null;
 
-        public OnGUICallback onGUICallback = null;
+        internal OnGUICallback onGUICallback = null;
+        
+        
+        internal static ConsoleWindow Default = null;
 
-        public bool ShowGUI
+        internal bool ShowGUI
         {
             get => showGUI;
             set => showGUI = value;
@@ -40,17 +44,23 @@ namespace QFramework
             540 - (2 * margin));
 
         public bool OpenInAwake = false;
-
+        
+        
         void Awake()
         {
-            ConsoleKit.InitModules();
+            ConsoleKit.Modules.ForEach(m => m.OnInit());
             this.showGUI = OpenInAwake;
             DontDestroyOnLoad(this);
+
+            mIndex = ConsoleKit.GetDefaultIndex();
+            Default = this;
         }
 
         void OnDestroy()
         {
-            ConsoleKit.DestroyModules();
+            ConsoleKit.Modules.ForEach(m => m.OnDestroy());
+            // ConsoleKit.RemoveAllModules();
+            Default = null;
         }
 
         void Update()
@@ -75,30 +85,18 @@ namespace QFramework
         }
 
         private int mIndex = 0;
+        
 
         void OnGUI()
         {
-            if (!this.showGUI)
+            if (!showGUI)
                 return;
 
-            if (this.onGUICallback != null)
-                this.onGUICallback();
+            if (onGUICallback != null)
+                onGUICallback();
 
             var cachedMatrix = GUI.matrix;
             IMGUIHelper.SetDesignResolution(960, 540);
-
-            if (GUI.Button(new Rect(100, 100, 100, 50), "清空数据"))
-            {
-                PlayerPrefs.DeleteAll();
-
-                Directory.Delete(Application.persistentDataPath, true);
-#if UNITY_EDITOR
-                EditorApplication.isPlaying = false;
-#else
-                Application.Quit ();
-#endif
-            }
-
             windowRect = GUILayout.Window(int.MaxValue / 2, windowRect, DrawConsoleWindow, "控制台");
             GUI.matrix = cachedMatrix;
         }
@@ -112,6 +110,11 @@ namespace QFramework
             mIndex = GUILayout.Toolbar(mIndex, ConsoleKit.Modules.Select(m => m.Title).ToArray());
             ConsoleKit.Modules[mIndex].DrawGUI();
             GUI.DragWindow(new Rect(0, 0, 10000, 20));
+        }
+
+        internal void ShowModule(int index)
+        {
+            mIndex = index;
         }
     }
 }

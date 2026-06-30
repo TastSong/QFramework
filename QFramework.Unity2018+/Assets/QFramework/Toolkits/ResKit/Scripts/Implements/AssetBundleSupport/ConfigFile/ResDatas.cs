@@ -1,26 +1,9 @@
 ﻿/****************************************************************************
- * Copyright (c) 2018.3 ~ 2021.4 liangxie
+ * Copyright (c) 2016 ~ 2024 liangxiegame UNDER MIT LINCENSE
  * 
- * http://liangxiegame.com
+ * https://qframework.cn
  * https://github.com/liangxiegame/QFramework
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
+ * https://gitee.com/liangxiegame/QFramework
  ****************************************************************************/
 
 using System;
@@ -37,6 +20,7 @@ namespace QFramework
     public class ResDatas : IResDatas
     {
         public string AESKey = string.Empty;
+
 
         [Serializable]
         public class SerializeData
@@ -55,10 +39,7 @@ namespace QFramework
         /// </summary>
         public static string FileName = "asset_bundle_config.bin";
 
-        public IList<AssetDataGroup> AllAssetDataGroups
-        {
-            get { return mAllAssetDataGroup; }
-        }
+        public IList<AssetDataGroup> AllAssetDataGroups => mAllAssetDataGroup;
 
         private readonly List<AssetDataGroup> mAllAssetDataGroup = new List<AssetDataGroup>();
 
@@ -109,6 +90,21 @@ namespace QFramework
             return group.AddAssetBundleName(name, depends);
         }
 
+        public string GetABHash(string assetName)
+        {
+            foreach (var assetDataGroup in mAllAssetDataGroup)
+            {
+                var abUnit = assetDataGroup.GetABUnit(assetName);
+
+                if (abUnit != null)
+                {
+                    return abUnit.Hash;
+                }
+            }
+
+            return null;
+        }
+
         public string[] GetAllDependenciesByUrl(string url)
         {
             var abName = AssetBundleSettings.AssetBundleUrl2Name(url);
@@ -148,11 +144,9 @@ namespace QFramework
 
         public void LoadFromFile(string path)
         {
-            var binarySerializer = ResKit.Get.Container.Get<IBinarySerializer>();
-            var zipFileHelper = ResKit.Get.Container.Get<IZipFileHelper>();
-
+            var binarySerializer = Architecture.BinarySerializer;
+            var zipFileHelper = Architecture.ZipFileHelper;
             
-
             object data;
 
            //  if (File.ReadAllText(path).Contains(AES.AESHead))
@@ -217,7 +211,7 @@ namespace QFramework
 
                 var stream = new MemoryStream(www.bytes);
 
-                var data = ResKit.Get.Container.Get<IBinarySerializer>()
+                var data = Architecture.BinarySerializer
                     .DeserializeBinary(stream);
 
                 if (data == null)
@@ -251,7 +245,7 @@ namespace QFramework
                 sd.AssetDataGroup[i] = mAllAssetDataGroup[i].GetSerializeData();
             }
 
-            if (ResKit.Get.Container.Get<IBinarySerializer>()
+            if (Architecture.BinarySerializer
                 .SerializeBinary(outPath, sd))
             {
                 Debug.Log("Success Save AssetDataTable:" + outPath);

@@ -1,46 +1,32 @@
 ﻿/****************************************************************************
-* Copyright (c) 2017 snowcold
-* Copyright (c) 2017 ~ 2022 liangxie
-*
-* https://qframework.cn
-* https://github.com/liangxiegame/QFramework
-* https://gitee.com/liangxiegame/QFramework
-****************************************************************************/
+ * Copyright (c) 2015 - 2025 liangxiegame UNDER MIT LICENSE
+ *
+ * https://qframework.cn
+ * https://github.com/liangxiegame/QFramework
+ * https://gitee.com/liangxiegame/QFramework
+ * AudioKit v1.0: use QFramework.cs architecture
+ ****************************************************************************/
 
-using System;
-using System.Linq;
+using UnityEngine;
 
 namespace QFramework
 {
-    using System.Collections.Generic;
-    using UnityEngine;
-    
-    [MonoSingletonPath("[Audio]/AudioManager")]
-    public partial class AudioManager : MonoBehaviour, ISingleton
+    [MonoSingletonPath("QFramework/AudioKit/AudioManager")]
+    internal class AudioManager : MonoBehaviour, ISingleton, IController
     {
+        internal MusicPlayer MusicPlayer { get; private set; }
 
-        public AudioPlayer MusicPlayer { get; private set; }
-
-        public AudioPlayer VoicePlayer { get; private set; }
+        internal MusicPlayer VoicePlayer { get; private set; }
 
         public void OnSingletonInit()
         {
-
             SafeObjectPool<AudioPlayer>.Instance.Init(10, 1);
-            MusicPlayer = AudioPlayer.Allocate();
-            MusicPlayer.usedCache = false;
-            VoicePlayer = AudioPlayer.Allocate();
-            VoicePlayer.usedCache = false;
+            MusicPlayer = new MusicPlayer(AudioKit.Settings.MusicVolume);
+            VoicePlayer = new MusicPlayer(AudioKit.Settings.VoiceVolume, false);
 
             CheckAudioListener();
 
             gameObject.transform.position = Vector3.zero;
-
-            AudioKit.Settings.MusicVolume.Register(volume => { MusicPlayer.SetVolume(volume); })
-                .UnRegisterWhenGameObjectDestroyed(gameObject);
-
-            AudioKit.Settings.VoiceVolume.Register(volume => { VoicePlayer.SetVolume(volume); })
-                .UnRegisterWhenGameObjectDestroyed(gameObject);
 
             AudioKit.Settings.IsMusicOn.Register(musicOn =>
             {
@@ -79,56 +65,22 @@ namespace QFramework
                 }
                 else
                 {
-                    ForEachAllSound(player => player.Stop());
+                    Architecture.PlayingSoundPoolModel.ForEachAllSound(p=>p.Stop());
                 }
             }).UnRegisterWhenGameObjectDestroyed(gameObject);
-
-
-            AudioKit.Settings.SoundVolume.Register(soundVolume =>
-            {
-                ForEachAllSound(player => player.SetVolume(soundVolume));
-            }).UnRegisterWhenGameObjectDestroyed(gameObject);
         }
 
-        private static Dictionary<string, List<AudioPlayer>> mSoundPlayerInPlaying =
-            new Dictionary<string, List<AudioPlayer>>(30);
 
-
-        public void ForEachAllSound(Action<AudioPlayer> operation)
-        {
-            foreach (var audioPlayer in mSoundPlayerInPlaying.SelectMany(keyValuePair => keyValuePair.Value))
-            {
-                operation(audioPlayer);
-            }
-        }
-
-        public void AddSoundPlayer2Pool(AudioPlayer audioPlayer)
-        {
-            if (mSoundPlayerInPlaying.ContainsKey(audioPlayer.Name))
-            {
-                mSoundPlayerInPlaying[audioPlayer.Name].Add(audioPlayer);
-            }
-            else
-            {
-                mSoundPlayerInPlaying.Add(audioPlayer.Name, new List<AudioPlayer> { audioPlayer });
-            }
-        }
-
-        public void RemoveSoundPlayerFromPool(AudioPlayer audioPlayer)
-        {
-            mSoundPlayerInPlaying[audioPlayer.Name].Remove(audioPlayer);
-        }
-        
         #region 对外接口
 
-        public void Init()
+        internal void Init()
         {
             Debug.Log("AudioManager.Init");
         }
 
         private AudioListener mAudioListener;
 
-        public void CheckAudioListener()
+        internal void CheckAudioListener()
         {
             // 确保有一个AudioListener
             if (!mAudioListener)
@@ -142,40 +94,31 @@ namespace QFramework
             }
         }
 
-        public string CurrentMusicName { get; set; }
+        internal string CurrentMusicName { get; set; }
 
-        public string CurrentVoiceName { get; set; }
+        internal string CurrentVoiceName { get; set; }
 
         #endregion
 
 
-
-
-        public static void PlayVoiceOnce(string voiceName)
+        internal static void PlayVoiceOnce(string voiceName)
         {
-
             if (string.IsNullOrEmpty(voiceName))
             {
                 return;
             }
 
-            var unit = SafeObjectPool<AudioPlayer>.Instance.Allocate();
-            unit.SetAudio(Instance.gameObject, voiceName, false);
+            SafeObjectPool<AudioPlayer>.Instance
+                .Allocate()
+                .PrepareByNameAsyncAndPlay(Instance.gameObject, voiceName, false);
         }
 
         #region 单例实现
 
-        public static AudioManager Instance
-        {
-            get { return MonoSingletonProperty<AudioManager>.Instance; }
-        }
-
+        internal static AudioManager Instance => MonoSingletonProperty<AudioManager>.Instance;
 
         #endregion
 
-        public void ClearAllPlayingSound()
-        {
-            mSoundPlayerInPlaying.Clear();
-        }
+        public IArchitecture GetArchitecture() => Architecture.Interface;
     }
 }

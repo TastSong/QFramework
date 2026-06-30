@@ -18,7 +18,7 @@ namespace QFramework
     [APIDescriptionCN("Action 时序动作序列（组合模式 + 命令模式 + 建造者模式）")]
     [APIDescriptionEN("Action Sequence (composite pattern + command pattern + builder pattern)")]
 #endif
-    public class ActionKit : Architecture<ActionKit>
+    public partial class ActionKit : Architecture<ActionKit>
     {
         public static ulong ID_GENERATOR = 0;
         
@@ -119,7 +119,7 @@ ActionKit.Sequence()
 
         public static IAction Callback(Action callback)
         {
-            return QFramework.Callback.Allocate(callback);
+            return QFramework.CallbackAction.Allocate(callback);
         }
 
 
@@ -134,15 +134,23 @@ ActionKit.Sequence()
         .Callback(() => Debug.Log(""Mouse Clicked""))
         .Start(this);
 
+ActionKit.Condition(()=>Input.GetKeyDown(KeyCode.Space),()=>Debug.Log(\""Space Down\""))
+    .Start(this);
+
 // Before Condition
 // ---- after left mouse click ----
 // ---- 鼠标左键点击之后 ----
 // Mouse Clicked
+// ---- 空格按下之后 ----
+// Space Down
 ")]
 #endif
-        void ConditionAPI()
+
+        public static IAction Condition(Func<bool> condition, Action onCondition = null)
         {
+            return ConditionAction.Allocate(condition, onCondition);
         }
+
 
 #if UNITY_EDITOR
         [MethodAPI]
@@ -379,6 +387,7 @@ ActionKit.Sequence()
         {
             return TaskAction.Allocate(taskGetter);
         }
+
 
 
         #region Events
